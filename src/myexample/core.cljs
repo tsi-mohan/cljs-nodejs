@@ -3,7 +3,6 @@
    [cljs.core.async.macros :as m :refer [go go-loop alt!]])
   (:require
    [cljs.nodejs :as nodejs]
-   [path :as path]
    [cljs.core.async :as async :refer [chan close! timeout put!]]
    [reagent.core :as reagent :refer [atom]]))
 
