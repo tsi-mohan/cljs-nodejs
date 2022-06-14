@@ -21,7 +21,7 @@
   (if (= "https" (aget (.-headers req) "x-forwarded-proto"))
     (.redirect res (str "http://" (.get req "Host") (.-url req)))
     (go
-      (.sendFile res ["/pages/hello.html"]))))
+      (.sendFile res "/pages/hello.html"))))
 
 (defn server [port success]
   (doto (express)
