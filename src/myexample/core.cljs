@@ -3,6 +3,7 @@
    [cljs.core.async.macros :as m :refer [go go-loop alt!]])
   (:require
    [cljs.nodejs :as nodejs]
+   [path :as path]
    [cljs.core.async :as async :refer [chan close! timeout put!]]
    [reagent.core :as reagent :refer [atom]]))
 
@@ -15,14 +16,14 @@
     (.redirect res (str "http://" (.get req "Host") (.-url req)))
     (go
       (.set res "Content-Type" "text/html")
-      (.send res "<p>Hello from ClojureScript and Express</p>"))))
+      (.send res path.resolve["./"]))))
 
 (defn routeHandler [req res]
   (if (= "https" (aget (.-headers req) "x-forwarded-proto"))
     (.redirect res (str "http://" (.get req "Host") (.-url req)))
     (go
       (.set res "Content-Type" "text/html")
-      (.sendFile res ["myexample/pages/hello.html"]))))
+      (.sendFile res ["/pages/hello.html"]))))
 
 (defn server [port success]
   (doto (express)

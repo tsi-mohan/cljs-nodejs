@@ -9,11 +9,11 @@
   },
   "dependencies": {
     "express": "4.13.3",
-    "xmlhttprequest": "*",
+    "path": "^0.12.7",
+    "source-map-support": "*",
     "xmldom": "0.1.19",
-    "source-map-support": "*"
+    "xmlhttprequest": "*"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
