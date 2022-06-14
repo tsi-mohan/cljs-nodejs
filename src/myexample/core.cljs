@@ -27,7 +27,7 @@
 (defn server [port success]
   (doto (express)
     (.get "/" handler)
-    (.get "hello" routeHandler)
+    (.get "/hello" routeHandler)
     (.listen port success)))
 
 (defn -main [& mess]
