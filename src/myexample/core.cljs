@@ -23,7 +23,7 @@
     (.redirect res (str "http://" (.get req "Host") (.-url req)))
     (go
       (.set res "Content-Type" "text/html")
-      (.sendFile res ["/pages/hello.html"]))))
+      (.sendFile res ["/src/myexample/pages/hello.html"]))))
 
 (defn server [port success]
   (doto (express)
