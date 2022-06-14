@@ -16,7 +16,7 @@
     (.redirect res (str "http://" (.get req "Host") (.-url req)))
     (go
       (.set res "Content-Type" "text/html")
-      (.send res path.resolve["./"]))))
+      (.send res .resolve["./"] path))))
 
 (defn routeHandler [req res]
   (if (= "https" (aget (.-headers req) "x-forwarded-proto"))
