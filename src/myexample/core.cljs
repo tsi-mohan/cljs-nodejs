@@ -17,9 +17,17 @@
       (.set res "Content-Type" "text/html")
       (.send res "<p>Hello from ClojureScript and Express</p>"))))
 
+(defn routeHandler [req res]
+  (if (= "https" (aget (.-headers req) "x-forwarded-proto"))
+    (.redirect res (str "http://" (.get req "Host") (.-url req)))
+    (go
+      (.set res "Content-Type" "text/html")
+      (.send res "<p>Hello from Mohan</p>"))))
+
 (defn server [port success]
   (doto (express)
     (.get "/" handler)
+    (.get "hello" routeHandler)
     (.listen port success)))
 
 (defn -main [& mess]
